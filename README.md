@@ -11,11 +11,16 @@ Buckle: 587
 - [Details](https://pjreddie.com/darknet/yolov2/)
 - [Paper](https://arxiv.org/pdf/1612.08242.pdf)
 
+#### Demo
+
+![Buckle](./demo_images/buckle.jpg)
+![Zipper](./demo_images/zipper.jpg)
+
 ### Future Scope:
     [ ] Fix the issue for the prediction result
+    [ ] Add a functionality for NMS
     [ ] Deploy (Docker)
     [ ] Add a user interface
-    [ ] Return an image with bounding boxes
 
-run `predict.py` in the scripts directory to test the model
+run `predict.py` in the scripts directory to test the model with image arguments
 
