@@ -1,0 +1,17 @@
+Ã
+5
+
+NoOp"serve*1.14.02v1.14.0-rc1-22-gaf24dc91b5G
+
+init_all_tablesNoOp
+(
+legacy_init_opNoOp^init_all_tables"&")
+saved_model_main_op
+
+legacy_init_op*•
+predict_images‚
+1
+input(
+input:0ÿÿÿÿÿÿÿÿÿ  1
+output'
+output:0ÿÿÿÿÿÿÿÿÿ#tensorflow/serving/predict
