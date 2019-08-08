@@ -4,12 +4,12 @@
 Two Classes: Zip & Buckle
 
 * Dataset size: 1018
-* Zip: 574
-* Buckle: 587
+Zip: 574
+Buckle: 587
 
-* [DarkFlow] (https://github.com/thtrieu/darkflow)
-* [Details] (https://pjreddie.com/darknet/yolov2/)
-* [Paper] (https://arxiv.org/pdf/1612.08242.pdf)
+- [DarkFlow](https://github.com/thtrieu/darkflow)
+- [Details](https://pjreddie.com/darknet/yolov2/)
+- [Paper](https://arxiv.org/pdf/1612.08242.pdf)
 
 ### Future Scope:
     [ ] Fix the issue for the prediction result
