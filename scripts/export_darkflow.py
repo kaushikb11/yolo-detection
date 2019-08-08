@@ -1,5 +1,6 @@
 from darkflow.net.build import TFNet
 import cv2
+import os
 import tensorflow as tf
 from tensorflow.python.saved_model import builder as saved_model_builder
 
@@ -13,10 +14,12 @@ image = cv2.imread("../test_images/backstrap9.jpg")
 result = tfnet.return_predict(image)
 for res in result:
     print("{} (confidence: {})".format(res['label'], str(res['confidence'])))
-    print("topleft( {}, {}), botright({}, {})".format(res['topleft']['x'], res['topleft']['y'],
+    print("topleft({}, {}), botright({}, {})".format(res['topleft']['x'], res['topleft']['y'],
                                                     res['bottomright']['x'], res['bottomright']['y']))
 
-export_path = '../object_detector/1'
+
+number_of_versions = len(os.listdir('../object_detector/'))
+export_path = '../object_detector/{}'.format(str(number_of_versions + 1))
 print('Exporting trained model to', export_path)
 
 builder = saved_model_builder.SavedModelBuilder(export_path)

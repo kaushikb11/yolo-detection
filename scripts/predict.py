@@ -29,6 +29,6 @@ for res in result:
     cv2.rectangle(image, (x1, y1), (x2, y2), (255,0,0), 2)
     cv2.putText(image, res['label'] + ':' + str(res['confidence']), (x1-10,y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
 
-    cv2.imwrite("../demo_images/{}.jpg".format(res['label']), image)
-    cv2.imshow("test", image)
-    cv2.waitKey(0)
+cv2.imwrite("../demo_images/{}.jpg".format(res['label']), image)
+cv2.imshow("Demo", image)
+cv2.waitKey(0)
