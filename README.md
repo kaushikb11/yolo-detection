@@ -16,11 +16,6 @@ Buckle: 587
 ![Buckle](./demo_images/buckle.jpg)
 ![Zipper](./demo_images/zipper.jpg)
 
-### Future Scope:
-    [x] Fix the issue for the prediction result
-    [ ] Add a functionality for NMS
-    [ ] Deploy (Docker)
-    [ ] Add a user interface
 
 run `predict.py` in the scripts directory to test the model with image arguments
 
