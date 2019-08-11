@@ -1,0 +1,6 @@
+ckpt/*
+
+*.pyc
+.idea
+
+scripts/ckpt/*
