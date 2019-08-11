@@ -17,7 +17,7 @@ Buckle: 587
 ![Zipper](./demo_images/zipper.jpg)
 
 ### Future Scope:
-    [ ] Fix the issue for the prediction result
+    [x] Fix the issue for the prediction result
     [ ] Add a functionality for NMS
     [ ] Deploy (Docker)
     [ ] Add a user interface

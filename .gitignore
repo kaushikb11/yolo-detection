@@ -4,3 +4,9 @@ ckpt/*
 .idea
 
 scripts/ckpt/*
+server/ckpt/*
+
+scripts/labels.txt
+server/labels.txt
+
+

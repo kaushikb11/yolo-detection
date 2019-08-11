@@ -1,4 +1,5 @@
 from model import get_model
+import cv2
 
 
 def get_boxes_with_labels(array, data):
@@ -23,3 +24,11 @@ def get_boxes_with_labels(array, data):
         })
 
     return predictions
+
+
+def preprocess_image_data(image_path):
+    data = cv2.imread(image_path)
+    data = cv2.resize(data, (416, 416))
+    data = data / 255.
+    data = data[:, :, ::-1]
+    return data

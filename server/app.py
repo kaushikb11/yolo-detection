@@ -5,31 +5,39 @@ import numpy as np
 import requests
 from flask import Flask, request, jsonify
 from keras.preprocessing import image
+import cv2
+import sys
+
+sys.path.append('..')
+from utils import get_boxes_with_labels
 
 app = Flask(__name__)
 
 
-@app.route('/darkflow/detect/', methods=['POST'])
+@app.route('/darkflow/predict/', methods=['POST'])
 def image_classifier():
-    # Decoding and pre-processing base64 image
-    img = image.img_to_array(image.load_img(BytesIO(base64.b64decode(request.form['b64'])),
-                                            target_size=(416, 416))) / 255.
-    img = np.expand_dims(img, axis=0)
-    img = img.astype('float16')
+    SERVER_URL = 'http://localhost:9000/v1/models/darkflow:predict'
+    # Convert string of image data to uint8
+    nparr = np.fromstring(request.data, np.uint8)
+    # Decode image
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
+    data = cv2.resize(img, (416, 416))
+    data = data / 255.
+    data = data[:, :, ::-1]
     # Creating payload for TensorFlow serving request
     payload = {
-        "inputs": [{'input': img.tolist()}],
+        "instances": [{'input': data.tolist()}],
         "signature_name": "predict"  # Custom signature name
     }
 
     # Making POST request
-    r = requests.post('http://localhost:9000/v1/models/darkflow:predict', json=payload)
-
-    # Decoding results from TensorFlow Serving server
-    predictions = json.loads(r.content.decode('utf-8'))
-
-    return jsonify(predictions)
+    response = requests.post(SERVER_URL, json=payload)
+    json_response = json.loads(response.text)
+    net_out = np.squeeze(np.array(json_response['predictions'], dtype='float32'))
+    
+    predictions = get_boxes_with_labels(net_out, data)
+    return jsonify({'results': str(predictions)})
 
 
 if __name__ == "__main__":

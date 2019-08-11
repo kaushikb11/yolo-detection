@@ -20,8 +20,8 @@ for res in result:
                                                     res['bottomright']['x'], res['bottomright']['y']))
 
 
-number_of_versions = len(os.listdir('../object_detector/'))
-export_path = '../object_detector/{}'.format(str(number_of_versions + 1))
+number_of_versions = len(os.listdir('../darkflow/'))
+export_path = '../darkflow/{}'.format(str(number_of_versions + 1))
 print('Exporting trained model to', export_path)
 
 with tfnet.sess.graph.as_default():
@@ -46,5 +46,6 @@ with tfnet.sess.graph.as_default():
         signature_def_map={
             "predict": prediction_signature,
         })
+        
     builder.save()
     print('Done exporting!')

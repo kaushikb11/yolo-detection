@@ -7,7 +7,7 @@ import cv2
 import sys
 
 sys.path.append('..')
-from utils import get_boxes_with_labels
+from utils import get_boxes_with_labels, preprocess_image_data
 
 # Argument parser for giving input image_path from command line
 ap = argparse.ArgumentParser()
@@ -18,10 +18,7 @@ args = vars(ap.parse_args())
 SERVER_URL = 'http://localhost:9000/v1/models/darkflow:predict'
 
 image_path = args['image']
-data = cv2.imread(image_path)
-data = cv2.resize(data, (416, 416))
-data = data / 255.
-data = data[:, :, ::-1]
+data = preprocess_image_data(image_path)
 
 payload = {
     "signature_name": "predict",  # Custom signature name
